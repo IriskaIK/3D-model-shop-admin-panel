@@ -1,15 +1,11 @@
-import React from "react";
 import {Chip, Tooltip} from "@mantine/core";
-import {useAppSelector} from "store/hooks.ts";
-import {RootState} from "store/store.ts";
+
+interface SearchOptionsTooltipProps<T> {
+    state : T;
+}
 
 
-
-
-const SearchOptionsTooltip: React.FC = () => {
-
-    const state = useAppSelector((state: RootState) => state.usersSearchBar);
-
+const SearchOptionsTooltip = <T extends {}>({state}: SearchOptionsTooltipProps<T>) => {
 
     const renderTooltipContent = () => {
         if (Object.entries(state)
@@ -28,7 +24,7 @@ const SearchOptionsTooltip: React.FC = () => {
                         .filter(([_key, value]) => value !== null)
                         .map(([key, value]) => (
                             <div key={key}>
-                                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+                                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value as string}
                             </div>
                         ))
                 }

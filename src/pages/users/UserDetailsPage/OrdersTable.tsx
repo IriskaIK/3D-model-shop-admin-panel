@@ -1,7 +1,7 @@
 import React from "react";
 import {Table} from "@mantine/core";
 import {IOrder} from "services/userService.ts";
-import OrdersTableItem from "components/pages/users/UserDetailsPage/OrdersTableItem.tsx";
+import OrdersTableItem from "pages/users/UserDetailsPage/OrdersTableItem.tsx";
 
 
 interface TableComponentProps {

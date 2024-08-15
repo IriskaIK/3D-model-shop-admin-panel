@@ -1,21 +1,18 @@
 import React, {useEffect} from "react";
-import ControlBar from "./TableComponents/ControlBarComponents/ControlBar.tsx";
 import {Divider} from "@mantine/core";
-import TableComponent from "./TableComponents/TableComponent.tsx";
 import {fetchUsers} from "services/userService.ts";
 import {useAppSelector} from "store/hooks.ts";
 import {RootState} from "store/store.ts";
 import {setUsers} from "store/usersTable/usersTableSlice.ts";
 import { useAppDispatch} from "store/hooks.ts";
 
+import ControlBar from "pages/users/TableComponents/ControlBar.tsx";
+import TableComponent from "pages/users/TableComponents/TableComponent.tsx";
+
 const UsersPage : React.FC = () => {
     const dispatch = useAppDispatch();
 
     const state = useAppSelector((state: RootState ) => state.usersSearchBar);
-
-
-
-
 
     const users = useAppSelector((state : RootState) => state.usersTable.users)
     useEffect(() => {
@@ -38,11 +35,10 @@ const UsersPage : React.FC = () => {
         <>
             <ControlBar></ControlBar>
             <Divider my="md" />
-            <TableComponent tableItems={users}>
 
-            </TableComponent>
+            <TableComponent tableItems={users}></TableComponent>
         </>
     )
 }
 
-export default UsersPage;
+export default UsersPage

@@ -2,11 +2,11 @@ import {Button, Container, Group, Input, SimpleGrid, Space, Tabs, Title} from "@
 import React from "react";
 import {useLocation} from "react-router-dom";
 import {IDetailedUser} from "services/userService.ts";
-import OrdersTable from "components/pages/users/UserDetailsPage/OrdersTable.tsx";
-import CartTable from "components/pages/users/UserDetailsPage/CartTable.tsx";
-import WishlistTable from "components/pages/users/UserDetailsPage/WishlistTable.tsx";
+import OrdersTable from "pages/users/UserDetailsPage/OrdersTable.tsx";
+import CartTable from "pages/users/UserDetailsPage/CartTable.tsx";
+import WishlistTable from "pages/users/UserDetailsPage/WishlistTable.tsx";
 import {useDisclosure} from "@mantine/hooks";
-import DeleteModal from "components/pages/users/UserDetailsPage/DeleteModal.tsx";
+import DeleteModal from "pages/users/UserDetailsPage/DeleteModal.tsx";
 
 
 const UserDetailsPage: React.FC = () => {

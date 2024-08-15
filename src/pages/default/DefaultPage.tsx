@@ -1,6 +1,6 @@
 import React from "react";
 import {Center, Container, Title, Text, Space, SimpleGrid} from "@mantine/core";
-import FeaturesCard from "./components/FeaturesCard.tsx";
+import FeaturesCard from "pages/default/components/FeaturesCard.tsx";
 
 
 const cardsData = [

@@ -1,7 +1,7 @@
 import React from "react";
 import {Table} from "@mantine/core";
 import {IProduct} from "services/userService.ts";
-import ProductTableItem from "components/pages/users/UserDetailsPage/ProductTableItem.tsx";
+import ProductTableItem from "pages/users/UserDetailsPage/ProductTableItem.tsx";
 
 interface TableComponentProps {
     tableItems : IProduct[];
@@ -9,7 +9,7 @@ interface TableComponentProps {
 
 
 
-const WishlistTable : React.FC<TableComponentProps> = (props) =>{
+const CartTable : React.FC<TableComponentProps> = (props) =>{
     return(
         <Table>
             <Table.Thead>
@@ -28,4 +28,4 @@ const WishlistTable : React.FC<TableComponentProps> = (props) =>{
         </Table>
     )
 }
-export default WishlistTable
+export default CartTable

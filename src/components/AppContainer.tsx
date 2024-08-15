@@ -7,12 +7,12 @@ import HeaderView from "./header/HeaderView.tsx";
 import {useAppSelector} from "../store/hooks.ts";
 import {RootState} from "../store/store.ts";
 import { Route, Routes, Navigate} from "react-router-dom";
-import StatisticPage from "./pages/statistic/StatisticPage.tsx";
-import ProductsPage from "./pages/products/ProductsPage.tsx";
-import OrdersPage from "./pages/orders/OrdersPage.tsx";
-import UsersPage from "./pages/users/UsersPage.tsx";
-import DefaultPage from "./pages/default/DefaultPage.tsx";
-import UserDetailsPage from "./pages/users/UserDetailsPage/UserDetailsPage.tsx";
+import StatisticPage from "../pages/statistic/StatisticPage.tsx";
+import ProductsPage from "../pages/products/ProductsPage.tsx";
+import OrdersPage from "../pages/orders/OrdersPage.tsx";
+import UsersPage from "../pages/users/UsersPage.tsx";
+import DefaultPage from "../pages/default/DefaultPage.tsx";
+import UserDetailsPage from "../pages/users/UserDetailsPage/UserDetailsPage.tsx";
 
 const AppContainer: React.FC = () => {
     const isNavbarOpened = useAppSelector((state: RootState) => state.navbar.isOpened)
