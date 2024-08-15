@@ -1,0 +1,8 @@
+.social-links:hover{
+
+    cursor: pointer;
+    color: #0f70c5;
+}
+.social-links{
+    all : unset;
+}
