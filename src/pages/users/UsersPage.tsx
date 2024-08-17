@@ -6,20 +6,20 @@ import {RootState} from "store/store.ts";
 import {setUsers} from "store/usersTable/usersTableSlice.ts";
 import { useAppDispatch} from "store/hooks.ts";
 
-import ControlBar from "pages/users/TableComponents/ControlBar.tsx";
-import TableComponent from "pages/users/TableComponents/TableComponent.tsx";
+import UsersControlBar from "pages/users/TableComponents/UsersControlBar.tsx";
+import UsersTable from "pages/users/TableComponents/UsersTable.tsx";
 
 const UsersPage : React.FC = () => {
     const dispatch = useAppDispatch();
 
-    const state = useAppSelector((state: RootState ) => state.usersSearchBar);
+    const searchBar = useAppSelector((state: RootState ) => state.usersSearchBar);
 
     const users = useAppSelector((state : RootState) => state.usersTable.users)
     useEffect(() => {
         const getUsers = async () => {
             try {
                 console.log('in user page req')
-                const data = await fetchUsers(state);
+                const data = await fetchUsers(searchBar);
                 dispatch(setUsers(data.users));
             } catch (error) {
                 console.error("Error fetching users:", error);
@@ -27,16 +27,16 @@ const UsersPage : React.FC = () => {
         };
 
         getUsers();
-    }, [state]);
+    }, [searchBar]);
 
 
 
     return (
         <>
-            <ControlBar></ControlBar>
+            <UsersControlBar></UsersControlBar>
             <Divider my="md" />
 
-            <TableComponent tableItems={users}></TableComponent>
+            <UsersTable tableItems={users}></UsersTable>
         </>
     )
 }

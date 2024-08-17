@@ -1,4 +1,5 @@
 import {UsersSearchBarState} from "store/usersSearchBar/usersSearchBarSlice.ts";
+import {IProduct} from "services/productService.ts";
 
 export interface IShippingAddress{
     id: number;
@@ -17,22 +18,21 @@ export interface IUser {
     created_at: string;
     updated_at: string;
 }
-export interface IProduct {
-    id: number,
-    publicId: string,
-    title: string,
-    subtitle: string,
-    content: string,
-    price: number,
-    currency: string,
-    isInStock: boolean,
-    category_id: number,
-    created_at: string,
-    updated_at: string
-}
+// export interface IProduct {
+//     id: number,
+//     slug: string,
+//     title: string,
+//     subtitle: string,
+//     content: string,
+//     price: number,
+//     currency: string,
+//     isInStock: boolean,
+//     category_id: number,
+//     created_at: string,
+//     updated_at: string
+// }
 export interface IOrderItem {
     id : number,
-    publicId : string,
     title : string,
     subtitle : string,
     price : number,

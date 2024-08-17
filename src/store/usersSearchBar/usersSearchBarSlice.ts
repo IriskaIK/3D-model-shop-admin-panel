@@ -35,7 +35,6 @@ const usersSearchBarSlice = createSlice({
         setPostOffice: (state, action: PayloadAction<string | null>) => {
             state.postOffice = action.payload;
         },
-        // Optional: Add a method to reset all fields to initial state
         reset: () => initialState,
     },
 

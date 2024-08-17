@@ -5,10 +5,10 @@ import {useNavigate} from "react-router-dom";
 
 interface TableItemTestProps {
     item: IUser,
-    fieldsToRender: (keyof IUser)[];
+    fieldsToRender: {path : string}[];
 }
 
-const TableItem: React.FC<TableItemTestProps> = ({item, fieldsToRender}) => {
+const UsersTableItem: React.FC<TableItemTestProps> = ({item, fieldsToRender}) => {
     const navigate = useNavigate();
 
     function seeDetails(item: IUser) {
@@ -33,4 +33,4 @@ const TableItem: React.FC<TableItemTestProps> = ({item, fieldsToRender}) => {
     )
 }
 
-export default TableItem;
+export default UsersTableItem;

@@ -13,7 +13,7 @@ import {
 import GenericControlBar from "components/TableComponents/GenericControlBar.tsx";
 
 
-const ControlBar: React.FC = () => {
+const UsersControlBar: React.FC = () => {
 
 
     const state = useAppSelector((state: RootState) => state.usersSearchBar);
@@ -70,4 +70,4 @@ const ControlBar: React.FC = () => {
         </GenericControlBar>
     )
 }
-export default ControlBar;
+export default UsersControlBar;

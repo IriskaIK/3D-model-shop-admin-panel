@@ -1,7 +1,7 @@
 import {Chip, Tooltip} from "@mantine/core";
 
 interface SearchOptionsTooltipProps<T> {
-    state : T;
+    state: T;
 }
 
 
@@ -22,11 +22,25 @@ const SearchOptionsTooltip = <T extends {}>({state}: SearchOptionsTooltipProps<T
                 {
                     Object.entries(state)
                         .filter(([_key, value]) => value !== null)
-                        .map(([key, value]) => (
-                            <div key={key}>
-                                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value as string}
-                            </div>
-                        ))
+                        .map(([key, value]) => {
+                            console.log(value)
+                            if (Array.isArray(value)) {
+                                const content = value.join(', ')
+                                return (
+                                    <div key={key}>
+                                        <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {content}
+                                    </div>
+                                )
+                            }
+
+
+                            return (
+
+                                <div key={key}>
+                                    <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value as string}
+                                </div>
+                            )
+                        })
                 }
             </div>
         );

@@ -1,7 +1,7 @@
 import React from "react";
 import GenericTable from "components/TableComponents/GenericTable.tsx";
 import {IUser} from "services/userService.ts";
-import TableItem from "pages/users/TableComponents/TableItem.tsx";
+import UsersTableItem from "pages/users/TableComponents/UsersTableItem.tsx";
 
 interface IUserTableTestProps {
     tableItems: IUser[];
@@ -9,7 +9,7 @@ interface IUserTableTestProps {
 
 
 
-const UsersTableTest : React.FC<IUserTableTestProps> = (props) => {
+const UsersTable: React.FC<IUserTableTestProps> = (props) => {
 
     return (
         <GenericTable
@@ -21,11 +21,17 @@ const UsersTableTest : React.FC<IUserTableTestProps> = (props) => {
                 {header : "Email", accessor : 'email'},
                 {header : "Role", accessor : "type"}
             ]}
-            RowComponent={TableItem}
-            fieldsToRender={['id', 'first_name', 'last_name', 'email', 'type']}
+            RowComponent={UsersTableItem}
+            fieldsToRender={[
+                {path: "id"},
+                {path: "first_name"},
+                {path: "last_name"},
+                {path: "email"},
+                {path: "type"},
+            ]}
 
         />
     );
 };
 
-export default UsersTableTest;
+export default UsersTable;

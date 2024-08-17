@@ -1,15 +1,25 @@
-import { Table } from "@mantine/core";
+import {Table} from "@mantine/core";
 import React from "react";
 
 interface TableProps<T> {
-    tableItems : T[];
+    tableItems: T[];
     columns: Array<{ header: string; accessor: keyof T }>;
-    fieldsToRender : (keyof T)[];
-    RowComponent: React.FC<{ item: T; fieldsToRender : (keyof T)[];}>;
+    fieldsToRender: { path: string, multipleData?: boolean, relativePath?: string}[];
+
+    RowComponent: React.FC<{
+        item: T;
+        fieldsToRender: { path: string, multipleData?: boolean, relativePath?: string }[];
+    }>;
 
 
 }
-const GenericTable = <T extends { id: number }>({columns, tableItems, RowComponent, fieldsToRender }: TableProps<T>) => {
+
+const GenericTable = <T extends { id: number }>({
+                                                    columns,
+                                                    tableItems,
+                                                    RowComponent,
+                                                    fieldsToRender
+                                                }: TableProps<T>) => {
     return (
         <Table striped highlightOnHover>
             <Table.Thead>
@@ -22,7 +32,7 @@ const GenericTable = <T extends { id: number }>({columns, tableItems, RowCompone
             </Table.Thead>
             <Table.Tbody>
                 {tableItems ? tableItems.map((item) => (
-                    <RowComponent key={item.id} item={item} fieldsToRender={fieldsToRender} />
+                    <RowComponent key={item.id} item={item} fieldsToRender={fieldsToRender}/>
                 )) : (<></>)}
             </Table.Tbody>
         </Table>
