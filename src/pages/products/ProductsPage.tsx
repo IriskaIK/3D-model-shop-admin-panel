@@ -17,6 +17,7 @@ const ProductsPage : React.FC = () => {
     useEffect(() => {
         const getProducts = async () => {
             try {
+                console.log(searchBar)
                 const data = await fetchProducts(searchBar);
                 dispatch(setProducts(data.products));
             } catch (error) {

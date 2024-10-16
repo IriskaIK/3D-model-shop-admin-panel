@@ -1,8 +1,8 @@
 import React from "react";
 import AppContainer from "./components/AppContainer.tsx";
 import {MantineProvider} from "@mantine/core";
-import {RootState} from "./store/store.ts";
-import {useAppSelector} from "./store/hooks.ts";
+import {RootState} from "store/store";
+import {useAppSelector} from "store/hooks";
 
 const App: React.FC = () => {
 

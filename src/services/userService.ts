@@ -3,9 +3,18 @@ import {IProduct} from "services/productService.ts";
 
 export interface IShippingAddress{
     id: number;
-    region: string | null;
-    city: string | null;
-    postOffice: string | null;
+    region: {
+        name : string,
+        id : number
+    };
+    city: {
+        name : string,
+        id : number
+    };
+    postOffice: {
+        address : string,
+        id : number
+    };
 }
 export interface IUser {
     type: string;
@@ -47,6 +56,12 @@ export interface IRecipient {
     created_at: string,
     updated_at: string
 }
+
+interface IRecipientAddress extends IShippingAddress {
+    address: string;
+}
+
+
 export interface IOrder {
     id : number,
     status : string,
@@ -57,7 +72,9 @@ export interface IOrder {
     user_id : number,
     orderItems :IOrderItem[],
     recipient : IRecipient,
-    shipping_address : IShippingAddress,
+    recipient_address : IRecipientAddress,
+    total_price : number,
+    delivery_price : number,
 }
 export interface IDetailedUser extends IUser{
     wishlist : IProduct[],
@@ -102,7 +119,7 @@ export const fetchUsers = async (state : UsersSearchBarState): Promise<IUsersRes
 
 export const fetchUserById = async (id: number): Promise<IDetailedUser> => {
     try {
-        const response = await fetch(`http://localhost:3000/api/admin/users/user/${id}`, {
+        const response = await fetch(`http://localhost:3000/api/admin/users/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

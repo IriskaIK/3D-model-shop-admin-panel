@@ -55,10 +55,12 @@ const DefaultPage: React.FC = () => {
                 {cardsData.map((element) => {
                     return (
                         <FeaturesCard
+                            key={element.title}
                             title={element.title}
                             description={element.description}
                             image={element.image}
                             navigateTo={element.navigateTo}>
+
                         </FeaturesCard>)
                 })}
             </SimpleGrid>

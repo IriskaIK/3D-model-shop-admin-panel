@@ -1,7 +1,6 @@
 import React from "react";
 import GenericTableItem from "components/TableComponents/GenericTableItem.tsx";
-import {fetchUserById, IDetailedUser} from "services/userService.ts";
-import {IProduct} from "services/productService.ts";
+import {fetchProductById, IProduct} from "services/productService.ts";
 import {useNavigate} from "react-router-dom";
 
 interface TableItemTestProps {
@@ -15,9 +14,9 @@ const ProductsTableItem: React.FC<TableItemTestProps> = ({item, fieldsToRender})
     function seeDetails(item: IProduct) {
         const getUserById = async () => {
             try {
-                const data: IDetailedUser = await fetchUserById(item.id);
+                const data: IProduct = await fetchProductById(item.id);
                 console.log(data);
-                navigate(`${item.id}`, {state: {user: data}})
+                navigate(`/products/${item.id}`, {state: {product: data}})
             } catch (error) {
                 console.error("Error fetching users:", error);
             }

@@ -1,7 +1,8 @@
 import React from "react";
 import {Table} from "@mantine/core";
-import {IProduct} from "services/userService.ts";
+
 import ProductTableItem from "pages/users/UserDetailsPage/ProductTableItem.tsx";
+import {IProduct} from "services/productService";
 
 interface TableComponentProps {
     tableItems : IProduct[];

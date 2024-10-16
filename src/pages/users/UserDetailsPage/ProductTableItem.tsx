@@ -1,18 +1,37 @@
 
 import React from 'react';
 import {Group, Table} from "@mantine/core";
-import {IProduct} from "services/userService.ts";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
+import {fetchProductById, IProduct} from "services/productService";
+import {useNavigate} from "react-router-dom";
 
 
 const ProductTableItem: React.FC<IProduct> = (props) => {
+    const navigate = useNavigate();
+    function seeDetails(item: IProduct) {
+        const getUserById = async () => {
+            try {
+                const data: IProduct = await fetchProductById(item.id);
+                console.log(data);
+                navigate(`/products/${item.id}`, {state: {product: data}})
+            } catch (error) {
+                console.error("Error fetching users:", error);
+            }
+        };
+
+        getUserById();
+
+    }
+
+
+
     return (
         <Table.Tr key={props.id}>
             <Table.Td>
                 <Group>
                     <div className="see-btn">
-                        <FontAwesomeIcon icon={faEye} />
+                        <FontAwesomeIcon onClick={() => seeDetails(props)} icon={faEye} />
                     </div>
                 </Group>
             </Table.Td>

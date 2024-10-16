@@ -1,10 +1,10 @@
 import React from 'react';
-import {Group, Table} from "@mantine/core";
+import {Badge, Group, Table, Tooltip} from "@mantine/core";
 import {IOrder} from "services/userService.ts";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
 
-function formatDate(dateString : string) {
+function formatDate(dateString: string) {
     // Parse the date string
     const date = new Date(dateString);
 
@@ -25,17 +25,27 @@ const OrdersTableItem: React.FC<IOrder> = (props) => {
             <Table.Td>
                 <Group>
                     <div className="see-btn">
-                        <FontAwesomeIcon icon={faEye} />
+                        <FontAwesomeIcon icon={faEye}/>
                     </div>
                 </Group>
             </Table.Td>
             <Table.Td>{props.id}</Table.Td>
-            <Table.Td>{props.status.charAt(0).toUpperCase() + props.status.slice(1)}</Table.Td>
-            <Table.Td>see more</Table.Td>
-            <Table.Td> {props.shipping_address.region ? props.shipping_address.region : "-"},
-                {props.shipping_address.city ? props.shipping_address.city : "-"},
-                {props.shipping_address.postOffice ? props.shipping_address.postOffice : "-"}</Table.Td>
-            <Table.Td>---</Table.Td>
+            <Table.Td>In progress</Table.Td>
+
+            <Table.Td>
+                <Tooltip label={`${props.recipient.first_name} ${props.recipient.last_name ? props.recipient.last_name : ''}, +38 ${props.recipient.phone}`}>
+                    <Badge>
+                        see more
+                    </Badge>
+                </Tooltip>
+            </Table.Td>
+
+
+            <Table.Td>
+                {props.recipient_address.address}
+            </Table.Td>
+
+            <Table.Td>{props.total_price}$</Table.Td>
             <Table.Td>{formatDate(props.created_at)}</Table.Td>
         </Table.Tr>
     )
